@@ -16,7 +16,7 @@ export default function Navbar({}: Props) {
             </span>    
             
                 <section className="flex gap-2 items-center">
-                <MdMyLocation className='text-2xl text-gray-400 hover:text-sky-400'/>
+                <MdMyLocation className='text-2xl text-gray-400 hover:text-sky-400 cursor-pointer'/>
                 <MdOutlineLocationOn className='text-3xl hover:text-red-700'/>
                 <p className='text-slate-900/80 text-sm-bold'>Portugal</p>
                 <div>
