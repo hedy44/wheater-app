@@ -8,6 +8,8 @@ import axios from "axios";
 import { format, parseISO } from "date-fns";
 import Container from "@/components/Container";
 import { convertKelvinToCelsius } from "@/utils/convertKelvinToCelsius";
+import WeatherIcon from "@/components/WeatherIcon";
+import { getDayOrNightIcon } from "@/utils/getDayOrNightIcon";
 
 
 
@@ -244,7 +246,18 @@ export default function Home() {
             <div className="flex gap-10 sm:gap-16 overflow-x-auto w-full justify-between pr-3">
               {data?.list.map((d,i) => (
               
-              <div key={i} className="flex flex-col justify-between gap-2 items-center text-xs font-semibold"></div>
+              <div key={i} className="flex flex-col justify-between gap-2 items-center text-xs font-semibold">
+                {/* Horas */}
+                <p className="whitespace-nowrap">
+                  {format(parseISO(d.dt_txt), 'h:mm a')}
+                </p>
+                {/* Weather icon */}
+                <p>
+                  {/* <WeatherIcon iconName={d.weather[0].icon}/> */}
+                  <WeatherIcon iconName={getDayOrNightIcon(d.weather[0].icon, d.dt_txt)}/>
+                  {convertKelvinToCelsius(d?.main.temp ?? 0)} º
+                </p>
+              </div>
               
               
               ))}
